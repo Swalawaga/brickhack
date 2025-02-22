@@ -18,7 +18,8 @@
           <div id="prompt"><a>Prompt 2</a></div>
           <div id="prompt"><a>Prompt 3</a></div>
           <div id="prompt"><a>Prompt 4</a></div>
-          <div id="prompt"><a id='add_yours'>Add yours</a></div>
+          <div id="prompt"><a id='saveBtn'>Add yours</a></div>
+          <input type="number" id="rating" placeholder="Rating (1-5)" min="1" max="5">
         </div>
     </div>
     <div class="container">
@@ -32,33 +33,51 @@
       <div id="responseMessage"></div>
     </div>
     <script>
+      document.getElementById('saveBtn').addEventListener('click', () => {
+          const message = document.getElementById('userInput').value.trim();
 
-      const button = document.getElementById('add_yours');
-      
+          if (!message) {
+              alert("Message cannot be empty!");
+              return;
+          }
+
+          fetch('/save-message', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({ message }) // Send only the message
+          })
+              .then(response => response.json())
+              .then(data => {
+                  if (data.success) {
+                      alert("Message saved successfully!");
+                  } else {
+                      alert("Error: " + data.error);
+                  }
+              })
+              .catch(error => console.error('Error:', error));
+      });
       
       // Get the form element
       const form = document.getElementById("myForm");
 
       // Prevent form from submitting and reload the page
       form.addEventListener("submit", function(event) {
-      event.preventDefault();  // Prevent page reload
+          event.preventDefault();  // Prevent page reload
 
-      // Get the input value from the textarea
-      var userInput = document.getElementById("userInput").value;
-      
-      userInput = document.getElementById("responseMessage").innerHTML + userInput;
-      // Send the data via a POST request using fetch
-      fetch('/submit', {
-      method: 'POST',
-      headers: {
-      'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ user_input: userInput })
-      })
-      .then(response => response.json())
-        .then(data => {
-            document.getElementById("responseMessage").innerHTML = data.receivedText.replaceAll('```html', "").replaceAll('```', "");
-        })
+          // Get the input value from the textarea
+          var userInput = document.getElementById("userInput").value;
+          
+          userInput = document.getElementById("responseMessage").innerHTML + userInput;
+          // Send the data via a POST request using fetch
+          fetch('/submit', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json', },
+              body: JSON.stringify({ user_input: userInput })
+          })
+              .then(response => response.json())
+              .then(data => {
+                  document.getElementById("responseMessage").innerHTML = data.receivedText.replaceAll('```html', "").replaceAll('```', "");
+              })
         .catch(error => {
         console.error('Error:', error);
         });
