@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Send Text to Express</title>
+    <title>Awesome Website</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="container">
-      <h1>Send Text to Express Server</h1>
+      <h1>Awesome Website</h1>
 
       <form id="myForm">
         <textarea name="user_input" id="userInput" rows="4" cols="50"></textarea><br>
@@ -31,43 +31,34 @@
 
       <div id="responseMessage"></div>
     </div>
-    <!--Button-->
-    <button id="feedbackButton" onclick="showFeedbackBox()">Give Feedback</button>
-    <textarea id="feedbackBox" placeholder="Write feedback here..."></textarea>
     <script>
       // Get the form element
       const form = document.getElementById("myForm");
 
       // Prevent form from submitting and reload the page
       form.addEventListener("submit", function(event) {
-          event.preventDefault();  // Prevent page reload
+      event.preventDefault();  // Prevent page reload
 
-          // Get the input value from the textarea
-          const userInput = document.getElementById("userInput").value;
-
-          // Send the data via a POST request using fetch
-          fetch('/submit', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ user_input: userInput })
-          })
-              .then(response => response.json())
-              .then(data => {
-                document.getElementById("responseMessage").innerHTML += data.receivedText;
-              })
-              .catch(error => {
-                  console.error('Error:', error);
-              });
-      });
-      // Show or hide feedback box when button is clicked
-    function showFeedbackBox() {
-      const feedbackBox = document.getElementById("feedbackBox");
-      feedbackBox.style.display = feedbackBox.style.display === "block" ? "none" : "block";
-    }
-    
+      // Get the input value from the textarea
+      var userInput = document.getElementById("userInput").value;
+      
+      userInput = document.getElementById("responseMessage").innerHTML + userInput;
+      // Send the data via a POST request using fetch
+      fetch('/submit', {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user_input: userInput })
+      })
+      .then(response => response.json())
+        .then(data => {
+            document.getElementById("responseMessage").innerHTML = data.receivedText.replaceAll('```html', "").replaceAll('```', "");
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        });
+        });
     </script>
-
   </body>
 </html>
