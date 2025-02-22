@@ -25,3 +25,7 @@ button {
 button:hover {
     background-color: #7ba6c2;
 }
+
+* {
+    transition: 3s;
+}
