@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(express.static(__dirname));
 
 // API endpoint to receive text from the frontend
-app.post('/send-text', (req, res) => {
-    const receivedText = req.body.text; // Extract text from request
+app.post('/submit', (req, res) => {
+    const receivedText = req.body.user_input;
     console.log('Received text:', receivedText);
     
     // Respond back to the frontend

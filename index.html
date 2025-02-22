@@ -7,26 +7,41 @@
 </head>
 <body>
     <h1>Send Text to Express Server</h1>
-    
-    <textarea id="myTextarea" placeholder="Enter your text here..."></textarea><br>
-    <button id="sendButton">Send Text</button>
+
+    <form id="myForm">
+        <textarea name="user_input" id="userInput" rows="4" cols="50"></textarea><br>
+        <button type="submit">Submit</button>
+    </form>
+
+    <p id="responseMessage"></p>
 
     <script>
-        document.getElementById("sendButton").addEventListener("click", function() {
-            const textValue = document.getElementById("myTextarea").value;
+        // Get the form element
+        const form = document.getElementById("myForm");
 
-            fetch('/send-text', {
+        // Prevent form from submitting and reload the page
+        form.addEventListener("submit", function(event) {
+            event.preventDefault();  // Prevent page reload
+
+            // Get the input value from the textarea
+            const userInput = document.getElementById("userInput").value;
+
+            // Send the data via a POST request using fetch
+            fetch('/submit', {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/json'
+                    'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ text: textValue })
+                body: JSON.stringify({ user_input: userInput })
             })
             .then(response => response.json())
             .then(data => {
-                alert(data.message + "\nReceived: " + data.receivedText);
+                // Display the response message without reloading the page
+                document.getElementById("responseMessage").innerText = data.message + "\nYou entered: " + data.receivedText;
             })
-            .catch(error => console.error('Error:', error));
+            .catch(error => {
+                console.error('Error:', error);
+            });
         });
     </script>
 </body>
