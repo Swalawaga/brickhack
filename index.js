@@ -1,13 +1,23 @@
 const express = require('express');
-const path = require('path');
-
+const bodyParser = require('body-parser');
 const app = express();
-const port = process.env.PORT || 8080;
+const port = 3000;
 
-// sendFile will go here
-app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, '/index.html'));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.get('/', (req, res) => {
+  res.send(`
+    <form method="post" action="/submit">
+      <textarea name="text"></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  `);
 });
 
-app.listen(port);
-console.log('Server started at http://localhost:' + port);
+app.post('/submit', (req, res) => {
+  const submittedText = req.body.text;
+  res.send(`You submitted: ${submittedText}`);
+});
+
+app.listen(port, () => {
+  console.log(`Server listening on port ${port}`);
+});
