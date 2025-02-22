@@ -31,6 +31,9 @@
 
       <div id="responseMessage"></div>
     </div>
+    <!--Button-->
+    <button id="feedbackButton" onclick="showFeedbackBox()">Give Feedback</button>
+    <textarea id="feedbackBox" placeholder="Write feedback here..."></textarea>
     <script>
       // Get the form element
       const form = document.getElementById("myForm");
@@ -58,6 +61,13 @@
                   console.error('Error:', error);
               });
       });
+      // Show or hide feedback box when button is clicked
+    function showFeedbackBox() {
+      const feedbackBox = document.getElementById("feedbackBox");
+      feedbackBox.style.display = feedbackBox.style.display === "block" ? "none" : "block";
+    }
+    
     </script>
+
   </body>
 </html>

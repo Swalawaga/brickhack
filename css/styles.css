@@ -1,7 +1,66 @@
 body {
-    background-color: #32a6a8;
+    background-color: #f0f0f0;
     font-family: "Quicksand", sans-serif, Arial;
     padding: 0;
+    margin: 0;
+    height: 4000px;
+}
+
+nav {
+    background-color: #a0cbe0;
+    color: white;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.dropbtn {
+    background-color: #a0cbe0;
+    color: white;
+    padding: 25px;
+    font-size: 20px;
+    border: none;
+}
+  
+.dropdown {
+    position: absolute;
+    right: 10px;
+    margin: 0 10px;
+}
+  
+.dropcontent {
+    display: none;
+    position: relative;
+    background-color: #f0f0f000;
+    min-width: 160px;
+    z-index: 1;
+    }
+  
+.dropcontent a {
+    color: black;
+    background-color: #f0f0f0;
+    padding: 30px 30px;
+    min-width: 160px;
+    margin: 5px 0;
+    border: black 1px solid;
+    border-radius: 5px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    justify-self: center;
+}
+  
+.dropcontent a:hover {
+    background-color: #c4e4f4;
+}
+  
+.dropdown:hover .dropcontent {
+    display: block;
+    animation: dropdown 0.3s ease-in-out;
+
+}
+  
+.dropdown:hover .dropbtn {
+    background-color: #7ba6c2;
 }
 
 .container {
@@ -10,3 +69,52 @@ body {
     justify-items: center;
 }
 
+button {
+    background-color: #a0cbe0;
+    color: white;
+    padding: 5px 5px;
+    margin: 8px 0;
+    border: black 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-family: "Quicksand", sans-serif, Arial;
+}
+
+button:hover {
+    background-color: #7ba6c2;
+}
+
+@keyframes dropdown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+}
+
+* {
+    transition: 3s;
+}
+
+#feedbackBox {
+    position: absolute;
+    display: none;
+    width: 290px;
+    height: 100px;
+    top: 110px;
+    left: 10px;
+    border-radius: 5px;
+}
+#feedbackBox::placeholder {
+    color: grey;
+}
+#feedbackButton {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    width:100px;
+}
