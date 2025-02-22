@@ -37,27 +37,28 @@
 
       // Prevent form from submitting and reload the page
       form.addEventListener("submit", function(event) {
-          event.preventDefault();  // Prevent page reload
+      event.preventDefault();  // Prevent page reload
 
-          // Get the input value from the textarea
-          const userInput = document.getElementById("userInput").value;
-
-          // Send the data via a POST request using fetch
-          fetch('/submit', {
-              method: 'POST',
-              headers: {
-                  'Content-Type': 'application/json',
-              },
-              body: JSON.stringify({ user_input: userInput })
-          })
-              .then(response => response.json())
-              .then(data => {
-                document.getElementById("responseMessage").innerHTML += data.receivedText;
-              })
-              .catch(error => {
-                  console.error('Error:', error);
-              });
-      });
+      // Get the input value from the textarea
+      var userInput = document.getElementById("userInput").value;
+      
+      userInput = document.getElementById("responseMessage").innerHTML + userInput;
+      // Send the data via a POST request using fetch
+      fetch('/submit', {
+      method: 'POST',
+      headers: {
+      'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ user_input: userInput })
+      })
+      .then(response => response.json())
+        .then(data => {
+        document.getElementById("responseMessage").innerHTML = data.receivedText;
+        })
+        .catch(error => {
+        console.error('Error:', error);
+        });
+        });
     </script>
   </body>
 </html>
