@@ -88,6 +88,10 @@ button:hover {
     background-color: #7ba6c2;
 }
 
+.formButtons button{
+    width: 15%;
+}
+
 @keyframes dropdown {
     from {
       opacity: 0;
