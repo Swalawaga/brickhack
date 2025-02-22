@@ -1,59 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Send Text to ChatGPT</title>
+    <title>Send Text to Express</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="css/styles.css">
-</head>
-
-<body>
-    <div class="container">
-        <h1>Send text to website builder</h1>
-
-        <form id="myForm">
-            <textarea name="user_input" id="userInput" rows="4" cols="50"></textarea><br>
-            <button type="submit">Submit</button>
-        </form>
-
-        <p id="responseMessage"></p>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <nav></nav>
+    <div class="dropdown">
+        <button class="dropbtn">See other generated prompts</button>
+        <div class="dropcontent">
+            <a href="#">Prompt 1</a>
+            <a href="#">Prompt 2</a>
+            <a href="#">Prompt 3</a>
+            <a href="#">Prompt 4</a>
+            <a href="#">Add yours!</a>
+        </div>
     </div>
+    <div class="container">
+      <h1>Send Text to Express Server</h1>
 
+      <form id="myForm">
+        <textarea name="user_input" id="userInput" rows="4" cols="50"></textarea><br>
+        <button type="submit">Submit</button>
+      </form>
+
+      <div id="responseMessage"></div>
+    </div>
     <script>
-        const form = document.getElementById("myForm");
+      // Get the form element
+      const form = document.getElementById("myForm");
 
-        form.addEventListener("submit", async function (event) {
-            event.preventDefault();
+      // Prevent form from submitting and reload the page
+      form.addEventListener("submit", function(event) {
+          event.preventDefault();  // Prevent page reload
 
-            const userInput = document.getElementById("userInput").value;
+          // Get the input value from the textarea
+          const userInput = document.getElementById("userInput").value;
 
-            try {
-                const response = await fetch('http://localhost:3000/api/chat', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ userInput })
-                });
-
-                const data = await response.json();
-                document.getElementById("responseMessage").innerText = "ChatGPT: " + data.reply;
-
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById("responseMessage").innerText = "Error: Unable to connect to ChatGPT";
-            }
-        });
+          // Send the data via a POST request using fetch
+          fetch('/submit', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              body: JSON.stringify({ user_input: userInput })
+          })
+              .then(response => response.json())
+              .then(data => {
+                document.getElementById("responseMessage").innerHTML += data.receivedText;
+              })
+              .catch(error => {
+                  console.error('Error:', error);
+              });
+      });
     </script>
-    
-
-  <!-- Button for adding feedback-->
-  <button onclick="showFeedbackBox()">Give Feedback</button>\
-  <textarea id="feedbackBox" placeholder="Write feedback here..."></textarea>
-  <script>
-    function showFeedbackBox() {
-      document.getElementById("feedbackBox").style.display = "block";
-    }
-  </script>
-</body>
-
+  </body>
 </html>
