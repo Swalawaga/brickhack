@@ -60,5 +60,16 @@
         });
         });
     </script>
+
+    <script>
+      // Fetch JSON data and insert it into the page
+      var dat;
+        fetch('/data.json')
+            .then(response => response.json())
+            .then(data => {
+                dat = data;
+            })
+            .catch(error => console.error('Error fetching JSON:', error));
+    </script>
   </body>
 </html>
