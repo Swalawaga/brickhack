@@ -34,7 +34,7 @@ app.post('/submit', async (req, res) => {
 
         // Check the response structure
         const aiResponse = response.data?.candidates?.[0]?.content?.parts?.[0]?.text || "No AI response";
-        res.json({ receivedText: aiResponse });
+        res.json({ receivedText: aiResponse.replaceAll("```html", "").replaceAll("```", "") });
 
     } catch (error) {
         console.error('Error:', error.response?.data || error.message);
