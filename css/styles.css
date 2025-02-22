@@ -1,0 +1,11 @@
+body {
+    background-color: #f0f0f0;
+    font-family: "Quicksand", sans-serif, Arial;
+    padding: 0;
+}
+
+.container {
+    width: 60%;
+    margin: 0 auto;
+    justify-items: center;
+}
