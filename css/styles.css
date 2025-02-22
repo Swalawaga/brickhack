@@ -37,7 +37,7 @@ nav {
     z-index: 1;
     }
   
-.dropcontent a {
+.dropcontent #prompt {
     color: black;
     background-color: #f0f0f0;
     padding: 30px 30px;
@@ -51,8 +51,9 @@ nav {
     justify-self: center;
 }
   
-.dropcontent a:hover {
+.dropcontent #prompt:hover {
     background-color: #c4e4f4;
+    cursor:pointer;
 }
   
 .dropdown:hover .dropcontent {

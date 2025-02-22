@@ -14,11 +14,11 @@
     <div class="dropdown">
         <button class="dropbtn">See other generated prompts</button>
         <div class="dropcontent">
-            <a href="#">Prompt 1</a>
-            <a href="#">Prompt 2</a>
-            <a href="#">Prompt 3</a>
-            <a href="#">Prompt 4</a>
-            <a href="#">Add yours!</a>
+          <div id="prompt"><a>Prompt 1</a></div>
+          <div id="prompt"><a>Prompt 2</a></div>
+          <div id="prompt"><a>Prompt 3</a></div>
+          <div id="prompt"><a>Prompt 4</a></div>
+          <div id="prompt"><a id='add_yours'>Add yours</a></div>
         </div>
     </div>
     <div class="container">
@@ -32,6 +32,10 @@
       <div id="responseMessage"></div>
     </div>
     <script>
+
+      const button = document.getElementById('add_yours');
+      
+      
       // Get the form element
       const form = document.getElementById("myForm");
 
