@@ -9,3 +9,20 @@ body {
     margin: 0 auto;
     justify-items: center;
 }
+
+button {
+    background-color: #a0cbe0;
+    color: white;
+    padding: 5px 5px;
+    margin: 8px 0;
+    border: black 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    width: 100%;
+    font-family: "Quicksand", sans-serif, Arial;
+}
+
+button:hover {
+    background-color: #7ba6c2;
+}
+
