@@ -10,7 +10,7 @@ app.use(express.static(__dirname));
 
 // API endpoint to send user input to Gemini API
 app.post('/submit', async (req, res) => {
-    const userInput = req.body.user_input;
+    const userInput = "Your response is being put directly into an html file so make it just html code. Do not use script tags. " + req.body.user_input;
 
     try {
         const response = await axios.post(
