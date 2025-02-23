@@ -5,17 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Awesome Website</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
   </head>
   <body>
-    <nav>
-      <div class="formButtons">
-        <button onclick="document.getElementById('myForm').reset()">Clear</button>
-        <button onclick="document.getElementById('responseMessage').innerHTML = ''">Reset</button>
-      </div>
-    </nav>
+    <nav></nav>
     <div class="dropdown">
         <button class="dropbtn">See other generated prompts</button>
         <div class="dropcontent">
@@ -28,6 +23,13 @@
           </form>
         </div>
     </div>
+
+    <div class="formButtons">
+        <button onclick="document.getElementById('myForm').reset()">Clear</button>
+        <button onclick="document.getElementById('responseMessage').innerHTML = ''">Reset</button>
+        <button type="submit">Settings</button>
+    </div>
+
     <div class="container">
       <h1>Awesome Website</h1>
 
@@ -35,9 +37,10 @@
         <textarea name="user_input" id="userInput" rows="4" cols="50"></textarea><br>
         <button type="submit">Submit</button>
       </form>
-
-      <div id="responseMessage"></div>
     </div>
+
+    <div id="responseMessage"></div>
+
     <script>
 
       var userInput = document.getElementById('userInput');

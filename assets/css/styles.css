@@ -70,26 +70,41 @@ nav {
     width: 60%;
     margin: 0 auto;
     justify-items: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 button {
     background-color: #a0cbe0;
     color: black;
     padding: 5px 5px;
-    margin: 8px 0;
+    margin: 10px 0;
     border: black 1px solid;
     border-radius: 5px;
     cursor: pointer;
     width: 100%;
+    display: flex;
     font-family: "Quicksand", sans-serif, Arial;
+    text-align: center;
+    justify-content: center;
 }
 
 button:hover {
     background-color: #7ba6c2;
 }
 
-.formButtons button{
-    width: 15%;
+.formButtons{
+    width: 20%;
+    margin: 1% 1%;
+}
+
+button.settings {
+    background-image: url('/assets/images/settings.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
 }
 
 @keyframes dropdown {
