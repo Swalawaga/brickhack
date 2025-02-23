@@ -42,6 +42,20 @@ app.post('/submit', async (req, res) => {
     }
 });
 
+const toggleButton = document.getElementById("toggleButton");
+const inputContainer = document.getElementById("inputContainer");
+
+toggleButton.addEventListener("click", function() {
+    // Toggle the hidden class to hide/show inputs
+    inputContainer.classList.toggle("hidden");
+
+    // Change the button text based on the visibility
+    if (inputContainer.classList.contains("hidden")) {
+        toggleButton.textContent = "Show Inputs";
+    } else {
+        toggleButton.textContent = "Hide Inputs";
+    }
+});
 app.listen(port, () => {
     console.log(`Server started at http://localhost:${port}`);
 });

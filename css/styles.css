@@ -1,9 +1,15 @@
 body {
-    background-color: #f0f0f0;
+    background-color: #93c478;
     font-family: "Quicksand", sans-serif, Arial;
     padding: 0;
     margin: 0;
-    height: 4000px;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+    position: relative; /* Added for dropdown to position relative to body */
 }
 
 nav {
@@ -11,30 +17,125 @@ nav {
     color: white;
     padding: 20px 0;
     text-align: center;
+    border-bottom: black 1px solid;
+}
+
+button {
+    background-color: #a0cbe0;
+    color: black;
+    padding: 10px 15px;
+    margin: 8px 0;
+    border: black 1px solid;
+    border-radius: 5px;
+    cursor: pointer;
+    font-family: "Quicksand", sans-serif, Arial;
+}
+
+button:hover {
+    background-color: #7ba6c2;
+}
+
+/* "Hide Inputs" Button */
+button#toggleButton {
+    background-color: #a0cbe0;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid black; /* Added border property */
+    cursor: pointer;
+    font-family: "Quicksand", sans-serif, Arial;
+    width: auto;
+}
+
+button#toggleButton:hover {
+    background-color: #7ba6c2;
+}
+
+#buttonContainer {
+    position: absolute;
+    top: 105px;
+    right: 500px;
+    display: flex;
+    gap: 10px; /* Add space between the buttons */
+}
+
+button#toggleButton {
+    background-color: #a0cbe0;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    font-family: "Quicksand", sans-serif, Arial;
+    width: auto;
+    top: 90px;
+    position: absolute;
+    left:500px;
+}
+button#submitButton {
+    background-color: #a0cbe0;
+    color: black;
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: 1px solid black;
+    cursor: pointer;
+    font-family: "Quicksand", sans-serif, Arial;
+    width: auto;
+    top: 90px;
+    position: absolute;
+    right: 600px;
+}
+
+
+button#toggleButton:hover, button#submitButton:hover {
+    background-color: #7ba6c2;
+}
+
+#inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: opacit;
+    position: absolute;
+    top:10px;
+}
+
+.hidden {
+    opacity: 0;
+    transform: translateY(-20px);
+    pointer-events: none;
+    visibility: hidden;
+}
+
+/* Dropdown positioning to the top-right */
+.dropdown {
+    position: absolute;
+    top: 20px; /* Adjust to place it at the top */
+    right: 20px; /* Adjust for right positioning */
+    z-index: 2;
 }
 
 .dropbtn {
     background-color: #a0cbe0;
-    color: white;
+    color: black;
     padding: 25px;
     font-size: 20px;
-    border: none;
+    border: black 1px solid;
+    border-radius: 5px;
 }
-  
-.dropdown {
-    position: absolute;
-    right: 10px;
-    margin: 0 10px;
-}
-  
+
 .dropcontent {
     display: none;
-    position: relative;
+    position: absolute;
+    top: 100%; /* Position it directly below the button */
+    left: 0;
     background-color: #f0f0f000;
     min-width: 160px;
     z-index: 1;
-    }
-  
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
 .dropcontent a {
     color: black;
     background-color: #f0f0f0;
@@ -46,75 +147,17 @@ nav {
     text-decoration: none;
     display: block;
     text-align: center;
-    justify-self: center;
 }
-  
+
 .dropcontent a:hover {
     background-color: #c4e4f4;
 }
-  
+
 .dropdown:hover .dropcontent {
     display: block;
-    animation: dropdown 0.3s ease-in-out;
-
+    opacity: 1; /* Make it visible when hovered */
 }
-  
+
 .dropdown:hover .dropbtn {
     background-color: #7ba6c2;
-}
-
-.container {
-    width: 60%;
-    margin: 0 auto;
-    justify-items: center;
-}
-
-button {
-    background-color: #a0cbe0;
-    color: white;
-    padding: 5px 5px;
-    margin: 8px 0;
-    border: black 1px solid;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    font-family: "Quicksand", sans-serif, Arial;
-}
-
-button:hover {
-    background-color: #7ba6c2;
-}
-
-@keyframes dropdown {
-    from {
-      opacity: 0;
-      transform: translateY(-10px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-}
-
-* {
-    transition: 3s;
-}
-
-#feedbackBox {
-    position: absolute;
-    display: none;
-    width: 290px;
-    height: 100px;
-    top: 110px;
-    left: 10px;
-    border-radius: 5px;
-}
-#feedbackBox::placeholder {
-    color: grey;
-}
-#feedbackButton {
-    position: absolute;
-    top: 50px;
-    left: 10px;
-    width:100px;
 }
