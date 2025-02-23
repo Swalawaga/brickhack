@@ -62,7 +62,7 @@ form.addEventListener("submit", function(event) {
                 document.getElementById("responseMessage").innerHTML = text;
             } else {
                 text = btoa(text);
-                document.getElementById("responseMessage").innerHTML += `<iframe src='data:text/html;base64,${text}'></iframe>`;
+                document.getElementById("responseMessage").innerHTML = `<iframe src='data:text/html;base64,${text}'></iframe>`;
             }
         })
         .catch(error => {
