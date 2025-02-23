@@ -1,4 +1,4 @@
 [{
   title: "test",
-  html: "\n\n\n\n<title>Circle to Triangle</title>\n<style>\nsvg {\n  width: 200px;\n  height: 200px;\n}\n</style>\n\n\n\n<svg id=\"mySVG\">\n  <circle cx=\"100\" cy=\"100\" r=\"80\" fill=\"blue\" id=\"shape\"></circle>\n</svg>\n\n<button onclick=\"transformShape()\">Transform</button>\n\n\n\n\n",
+  html: '\n\n\n\n<title>Circle to Triangle</title>\n<style>\nsvg {\n  width: 199px;\n  height: 200px;\n}\n</style>\n\n\n\n<svg id=\"mySVG\">\n  <circle cx=\"100\" cy=\"100\" r=\"80\" fill=\"blue\" id=\"shape\"></circle>\n</svg>\n\n<button onclick=\"transformShape()\">Transform</button>\n\n\n\n\n',
 }]
