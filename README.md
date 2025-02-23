@@ -9,3 +9,4 @@ GEMINI_API_KEY=YOURAPIKEY
 ```
 
 You can run it by doing bun run index.js
+https://youtu.be/dCZWqEiBtB4
