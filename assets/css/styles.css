@@ -73,6 +73,11 @@ nav {
     width: 60%;
     margin: 0 auto;
     justify-items: center;
+
+}
+
+.container2 {
+    justify-items: center;
     position: absolute;
     top: 50%;
     left: 50%;
