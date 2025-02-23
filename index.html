@@ -36,6 +36,46 @@
         <button type="submit">Submit</button>
       </form>
 
+
+<div id="sampleSettings">
+<style>
+#settingsDiv {
+  display: none; /* Initially hidden */
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid black;
+  padding: 20px;
+  background-color: white;
+}
+
+#settingsDiv.show {
+  display: block; /* Shown when checkbox is checked */
+}
+
+input[type="checkbox"] {
+  transform: scale(1.5); /* Makes checkbox larger */
+}
+</style>
+
+
+
+<input type="checkbox" id="toggleSettings" onchange="document.getElementById('settingsDiv').classList.toggle('show');"> Show Settings
+
+<div id="settingsDiv" class="show">
+  <form>
+    <label for="setting1">Setting 1:</label><br>
+    <input type="text" id="setting1" name="setting1"><br>
+    <label for="setting2">Setting 2:</label><br>
+    <input type="number" id="setting2" name="setting2"><br><br>
+    <input type="submit" value="Save">
+  </form>
+</div>
+
+
+
+</div>
       <div id="responseMessage"></div>
     </div>
     <script>

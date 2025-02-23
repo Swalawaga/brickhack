@@ -7,40 +7,33 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 8080;
 
-function appendJSON(filePath, newData) {
-  try {
-    let json = [];
 
-    // Ensure the file exists, if not, create an empty array
-    if (!fs.existsSync(filePath)) {
-      fs.writeFileSync(filePath, JSON.stringify([]), 'utf-8');
-    }
+const filePath = __dirname + "/comments.html";
 
-    // Read existing file data
-    const fileData = fs.readFileSync(filePath, 'utf-8');
-    json = fileData ? JSON.parse(fileData) : [];
-
-    if (Array.isArray(json)) {
-      json.push(newData);
-    } else {
-      console.error('Existing content is not an array. Resetting file.');
-      json = [newData]; // Reset file content if it's not an array
-    }
-
-    fs.writeFileSync(filePath, JSON.stringify(json, null, 2));
-    console.log('Data appended successfully.');
-  } catch (error) {
-    console.error('Error appending data:', error);
-  }
-}
+// Read the file
 
 app.use(express.json());
 app.use(express.static(__dirname));
 app.post('/save-message', (req, res) => {
-    const { message } = req.body;
-    console.log(req.body);
-    appendJSON(__dirname + "/data.json", { req });
-    
+    const { message } =  req.body;
+    console.log(message);
+    fs.readFile(filePath, 'utf8', (err, data) => {
+        if (err) {
+            console.error('Error reading file:', err);
+            return;
+        }
+        console.log('File content before append:', data);
+
+        // Append new content
+        const newContent = '\nNew data added!';
+        fs.appendFile(filePath, newContent, (err) => {
+            if (err) {
+                console.error('Error appending to file:', err);
+                return;
+            }
+            console.log('Content successfully appended!');
+        });
+    });
 });
 
 // API endpoint to send user input to Gemini API
