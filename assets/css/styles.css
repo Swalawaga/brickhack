@@ -1,5 +1,5 @@
 body {
-    background-color: #f0f0f0;
+    background-color: #ebe9e9;
     font-family: "Quicksand", sans-serif, Arial;
     padding: 0;
     margin: 0;
@@ -82,6 +82,10 @@ nav {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    background-color: #f0f0f0;
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 5px;
 }
 
 button, input[type="submit"] {
