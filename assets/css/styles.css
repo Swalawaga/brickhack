@@ -100,6 +100,30 @@ button:hover {
     margin: 1% 1%;
 }
 
+.responseMessage {
+    height: auto;
+}
+
+
+#settingsDiv {
+    display: none; /* Initially hidden */
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid black;
+    padding: 20px;
+    background-color: white;
+  }
+  
+  #settingsDiv.show {
+    display: block; /* Shown when checkbox is checked */
+  }
+  
+  input[type="checkbox"] {
+    transform: scale(1.5); /* Makes checkbox larger */
+  }
+
 button.settings {
     background-image: url('/assets/images/settings.png');
     background-repeat: no-repeat;

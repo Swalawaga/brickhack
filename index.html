@@ -27,7 +27,7 @@
     <div class="formButtons">
         <button onclick="document.getElementById('myForm').reset()">Clear</button>
         <button onclick="document.getElementById('responseMessage').innerHTML = ''">Reset</button>
-        <button type="submit">Settings</button>
+        <button id="toggleSettings">Settings</button>
     </div>
 
     <div class="container">
@@ -37,35 +37,10 @@
         <textarea name="user_input" id="userInput" rows="4" cols="50"></textarea><br>
         <button type="submit">Submit</button>
       </form>
-<<<<<<< HEAD
-=======
 
 
 <div id="sampleSettings">
-<style>
-#settingsDiv {
-  display: none; /* Initially hidden */
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  border: 1px solid black;
-  padding: 20px;
-  background-color: white;
-}
 
-#settingsDiv.show {
-  display: block; /* Shown when checkbox is checked */
-}
-
-input[type="checkbox"] {
-  transform: scale(1.5); /* Makes checkbox larger */
-}
-</style>
-
-
-
-<input type="checkbox" id="toggleSettings" onchange="document.getElementById('settingsDiv').classList.toggle('show');"> Show Settings
 
 <div id="settingsDiv" class="show">
   <form>
@@ -81,7 +56,6 @@ input[type="checkbox"] {
 
 </div>
       <div id="responseMessage"></div>
->>>>>>> d45504094c324da11f0ee1a38b03125fc183338d
     </div>
 
     <div id="responseMessage"></div>
@@ -141,6 +115,19 @@ input[type="checkbox"] {
                 dat = data;
             })
             .catch(error => console.error('Error fetching JSON:', error));*/
+    </script>
+    <script>
+    // document.getElementById('settingsDiv').style = 'display: none';
+    document.getElementById('toggleSettings').addEventListener('click', function () {
+        const settingsDiv = document.getElementById('settingsDiv');
+        if (settingsDiv.style.display === 'none') {
+          settingsDiv.style.display = 'block';
+          this.textContent = 'Hide Settings';
+        } else {
+          settingsDiv.style.display = 'none';
+          this.textContent = 'Show Settings';
+        }
+      });
     </script>
   </body>
 </html>
