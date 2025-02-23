@@ -1,6 +1,4 @@
 # brickhack
-Hackathon
+This is Super Cool Website.
 
-This is jez and this is my awesome first commit
-
-Test
+You can run it by doing bun run index.js
