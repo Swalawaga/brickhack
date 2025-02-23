@@ -1,0 +1,76 @@
+<div id="responseMessage">
+
+
+
+    <title>Crazy CSS</title>
+    <style>
+    body {
+      background-image: url("https://source.unsplash.com/random/1920x1080"); /* Replace with your desired background image */
+      background-size: cover;
+      font-family: 'Comic Sans MS', cursive, sans-serif; /* Or any crazy font you like */
+      color: #FF00FF; /* Magenta text */
+      text-shadow: 2px 2px 4px #000000; /* Add a shadow */
+      animation: backgroundColorChange 10s infinite; /* Animate background color */
+    }
+    
+    @keyframes backgroundColorChange {
+      0% { background-color: #FF0000; } /* Red */
+      25% { background-color: #FFFF00; } /* Yellow */
+      50% { background-color: #00FF00; } /* Green */
+      75% { background-color: #0000FF; } /* Blue */
+      100% { background-color: #FF0000; } /* Red */
+    }
+    
+    input[type="text"] {
+      background-color: #FFFF00; /* Yellow background for textbox */
+      color: #000000; /* Black text */
+      border: 5px solid #00FF00; /* Green border */
+      font-size: 2em;
+      padding: 10px;
+      border-radius: 20px;
+      box-shadow: 10px 10px 20px #000000;
+      animation: textBoxShadow 2s infinite alternate;
+    }
+    
+    @keyframes textBoxShadow {
+      0% { box-shadow: 10px 10px 20px #000000; }
+      100% { box-shadow: 20px 20px 40px #000000; }
+    }
+    
+    button {
+      background-color: #0000FF; /* Blue buttons */
+      color: #FFFFFF; /* White text */
+      border: none;
+      padding: 15px 32px;
+      text-align: center;
+      text-decoration: none;
+      display: inline-block;
+      font-size: 16px;
+      border-radius: 10px;
+      cursor: pointer;
+      box-shadow: 5px 5px 10px #000000;
+      transition: transform 0.3s ease; /* Add a smooth transition */
+    }
+    
+    button:hover {
+      transform: scale(1.1);
+      background-color: #00FFFF; /* Cyan on hover */
+    }
+    
+    
+    </style>
+    
+    
+    
+    <h1>Crazy CSS Example</h1>
+    
+    <div>
+      <input type="text" placeholder="Enter text here">
+      <button onclick="alert('Button 1 clicked!')">Button 1</button>
+      <button onclick="alert('Button 2 clicked!')">Button 2</button>
+    </div>
+    
+    
+    
+    
+    </div>
