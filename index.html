@@ -47,6 +47,7 @@
       <label for="setting1">Setting 1:</label><br>
       <input type="text" id="setting1" name="setting1"><br>
       <label for="setting2">Setting 2:</label><br>
+      <button onclick="toggleIframe()"></button>
       <input type="number" id="setting2" name="setting2"><br><br>
       <input type="submit" value="Save">
     </form>
@@ -58,93 +59,6 @@
     </div>
 
     <div id="responseMessage"></div>
-
-    <script>
-
-      var userInput = document.getElementById('userInput');
-      var responseMessage = document.getElementById('responseMessage');
-
-
-      var something = function(text) {
-      responseMessage.innerHTML = atob(text);
-      }
-      
-      
-      // Get the form element
-      const form = document.getElementById("myForm");
-
-      // Prevent form from submitting and reload the page
-      form.addEventListener("submit", function(event) {
-          event.preventDefault();  // Prevent page reload
-          
-          //userInput = responseMessage.innerHTML + userInput;
-          // Send the data via a POST request using fetch
-          fetch('/submit', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json', },
-              body: JSON.stringify({ user_input: responseMessage + userInput.value })
-          })
-              .then(response => response.json())
-              .then(data => {
-                  document.getElementById("responseMessage").innerHTML = data.receivedText.replaceAll('```html', "").replaceAll('```', "");
-              })
-              .catch(error => {
-                  console.error('Error:', error);
-              });
-      });
-    </script>
-
-    <script>
-      // Fetch JSON data and insert it into the page
-      /*
-      var dat;
-        fetch('/data.json')
-            .then(response => response.json())
-            .then(data => {
-                dat = data;
-            })
-            .catch(error => console.error('Error fetching JSON:',
-        error));
-        */
-    </script>
-    <script>
-    document.getElementById('settingsDiv').style = 'display: none';
-    document.getElementById('toggleSettings').addEventListener('click', function () {
-        const settingsDiv = document.getElementById('settingsDiv');
-        if (settingsDiv.style.display === 'none') {
-          settingsDiv.style.display = 'block';
-          this.textContent = 'Hide Settings';
-        } else {
-          settingsDiv.style.display = 'none';
-          this.textContent = 'Show Settings';
-        }
-    });
-
-    document.addEventListener("DOMContentLoaded", () => {
-        fetch('/fetch-file')
-        .then(response => response.json())
-        .then(data => {
-            document.querySelector(".dropcontent").innerHTML = data.recievedText;
-            console.log(data);
-
-    document.getElementById('form2').addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    fetch('/save-message', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', },
-    body: JSON.stringify({ title: userInput.value, html: responseMessage.innerHTML })
-    })
-    .then(response => response.json())
-        .then(data => {
-        console.log(data.receivedText);
-        }).catch(error => {
-        console.log('Error: ', error);
-        });
-        });
-        })
-        .catch(error => console.error('Error fetching file:', error));
-        });
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
