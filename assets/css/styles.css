@@ -76,7 +76,7 @@ nav {
     transform: translate(-50%, -50%);
 }
 
-button {
+button, input[type="submit"] {
     background-color: #a0cbe0;
     color: black;
     padding: 5px 5px;
@@ -112,13 +112,13 @@ button:hover {
     top: 50%;
     transform: translate(-50%, -50%);
     border: 1px solid black;
+    border-radius: 5px;
     padding: 20px;
     background-color: white;
-  }
-  
+}
   #settingsDiv.show {
     display: block; /* Shown when checkbox is checked */
-  }
+}
   
   input[type="checkbox"] {
     transform: scale(1.5); /* Makes checkbox larger */
@@ -130,6 +130,8 @@ button.settings {
     background-position: center;
     background-size: contain;
 }
+
+
 
 @keyframes dropdown {
     from {
