@@ -135,6 +135,23 @@ button.settings {
 }
 
 
+iframe {
+    outline: 0px solid black;
+    border: 1px solid black;
+    border-radius: 5px;
+    resize:both;
+}
+
+
+
+iframe.test1 {
+    z-index: -100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
 
 @keyframes dropdown {
     from {
@@ -151,3 +168,12 @@ button.settings {
     transition: 3s;
 }
 
+
+
+.container2 {
+    align-text: center;
+}
+
+body {
+    overflow: hidden;
+}

@@ -51,7 +51,8 @@ app.get('/fetch-file', (req, res) => {
 
 // API endpoint to send user input to Gemini API
 app.post('/submit', async (req, res) => {
-    const userInput = "Your response is being put directly into an html file so make it just html code. Do not use script tags. Use onaction events and html elements " + req.body.user_input;
+    //const userInput = "Your response is being put directly into an html file so make it just html code. Do not use script tags. Use onaction events and html elements " + req.body.user_input;
+    const userInput = "Your response is being put directly into an html file so make it just html code." + req.body.user_input;
 
     try {
         const response = await axios.post(

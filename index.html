@@ -13,15 +13,7 @@
     <nav></nav>
     <div class="dropdown">
         <button class="dropbtn">See other generated prompts</button>
-        <div class="dropcontent">
-          <div id="prompt"><a>Prompt 1</a></div>
-          <div id="prompt"><a>Prompt 2</a></div>
-          <div id="prompt"><a>Prompt 3</a></div>
-          <div id="prompt"><a>Prompt 4</a></div>
-          <form id="form2">
-            <div id="prompt"><button type="submit" id='saveBtn'>Add yours</button></div>
-          </form>
-        </div>
+        <div class="dropcontent"></div>
     </div>
 
     <div class="formButtons">
@@ -31,32 +23,34 @@
     </div>
 
     <div class="container">
+      <div class="container2">
       <h1>Awesome Website</h1>
 
       <form id="myForm">
         <textarea name="user_input" id="userInput" rows="4" cols="50"></textarea><br>
         <button type="submit">Submit</button>
       </form>
+      </div>
 
 
-<div id="sampleSettings">
+      <div id="sampleSettings">
 
 
-  <div id="settingsDiv" class="show">
-    <form>
-      <label for="setting1">Setting 1:</label><br>
-      <input type="text" id="setting1" name="setting1"><br>
-      <label for="setting2">Setting 2:</label><br>
-      <button onclick="toggleIframe()"></button>
-      <input type="number" id="setting2" name="setting2"><br><br>
-      <input type="submit" value="Save">
-    </form>
-  </div>
+        <div id="settingsDiv" class="show">
+          <!-- <label for="setting1">Full screen iframe:</label><br> -->
+          <!-- <button onclick="toggleFull(this)">false</button> -->
+          <label for="setting3">Toggle showing stuff:</label><br>
+          <button onclick="toggleShowStuff(this)">true</button>
+          <label for="setting2">Toggle Iframe(Experimental/Needed for
+          complicated stuff): </label><br>
+          <button onclick="toggleIframe(this)">false</button>
+          <!-- <input type="submit" value="Save"> -->
+        </div>
 
 
-  <div id="responseMessage"></div>
 
-</div>
+      </div>
+      <div id="responseMessage"></div>
     </div>
 
     <script src="script.js"></script>

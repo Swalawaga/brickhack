@@ -8,6 +8,42 @@ var something = function(text) {
 
 var iFrame = false;
 
+function toggleIframe(el) {
+    if(iFrame) {
+        el.innerHTML = "false";
+        iFrame = false;
+        return;
+    } else {
+        el.innerHTML = "true";
+        iFrame = true;
+        return;
+    }
+}
+
+function toggleShowStuff(el) {
+    var container2 = document.querySelector(".container2");
+    if(container2.style.display == "none") {
+        container2.style.display = "block";
+        el.innerHTML = "true";
+        return;
+    } else {
+        container2.style.display = "none";
+        el.innerHTML = "false";
+        return;
+    }
+}
+
+function toggleFull(el) {
+    var iframeEl = document.querySelector("iframe");
+    if(iframeEl.className == "test1") {
+        el.innerHTML = "false";
+        iframeEl.className = null;
+    } else {
+        el.innerHTML = "true";
+        iframeEl.className = "test1";
+    }
+}
+
 // Get the form element
 const form = document.getElementById("myForm");
 
