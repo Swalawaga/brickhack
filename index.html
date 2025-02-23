@@ -23,8 +23,9 @@
           <div id="prompt"><a>Prompt 2</a></div>
           <div id="prompt"><a>Prompt 3</a></div>
           <div id="prompt"><a>Prompt 4</a></div>
-          <div id="prompt"><a id='saveBtn'>Add yours</a></div>
-          <input type="number" id="rating" placeholder="Rating (1-5)" min="1" max="5">
+          <form id="form2">
+            <div id="prompt"><button type="submit" id='saveBtn'>Add yours</button></div>
+          </form>
         </div>
     </div>
     <div class="container">
@@ -38,28 +39,24 @@
       <div id="responseMessage"></div>
     </div>
     <script>
-      document.getElementById('saveBtn').addEventListener('click', () => {
-          const message = document.getElementById('userInput').value.trim();
 
-          if (!message) {
-              alert("Message cannot be empty!");
-              return;
-          }
+      var userInput = document.getElementById('userInput');
+      var responseMessage = document.getElementById('responseMessage');
+      
+      document.getElementById('form2').addEventListener("submit", function(event) {
+          event.preventDefault();
 
-          fetch('/save-message', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ message }) // Send only the message
-          })
-              .then(response => response.json())
-              .then(data => {
-                  if (data.success) {
-                      alert("Message saved successfully!");
-                  } else {
-                      alert("Error: " + data.error);
-                  }
+              fetch('/save-message', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json', },
+                  body: JSON.stringify({ title: userInput.value, html: responseMessage.innerHTML })
               })
-              .catch(error => console.error('Error:', error));
+                  .then(response => response.json())
+                  .then(data => {
+                      console.log(data.receivedText);
+                  }).catch(error => {
+                      console.log('Error: ', error);
+                  });
       });
       
       // Get the form element
@@ -68,36 +65,34 @@
       // Prevent form from submitting and reload the page
       form.addEventListener("submit", function(event) {
           event.preventDefault();  // Prevent page reload
-
-          // Get the input value from the textarea
-          var userInput = document.getElementById("userInput").value;
           
-          userInput = document.getElementById("responseMessage").innerHTML + userInput;
+          //userInput = responseMessage.innerHTML + userInput;
           // Send the data via a POST request using fetch
           fetch('/submit', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json', },
-              body: JSON.stringify({ user_input: userInput })
+              body: JSON.stringify({ user_input: responseMessage + userInput.value })
           })
               .then(response => response.json())
               .then(data => {
                   document.getElementById("responseMessage").innerHTML = data.receivedText.replaceAll('```html', "").replaceAll('```', "");
               })
-        .catch(error => {
-        console.error('Error:', error);
-        });
-        });
+              .catch(error => {
+                  console.error('Error:', error);
+              });
+      });
     </script>
 
     <script>
       // Fetch JSON data and insert it into the page
+      /*
       var dat;
         fetch('/data.json')
             .then(response => response.json())
             .then(data => {
                 dat = data;
             })
-            .catch(error => console.error('Error fetching JSON:', error));
+            .catch(error => console.error('Error fetching JSON:', error));*/
     </script>
   </body>
 </html>

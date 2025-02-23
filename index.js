@@ -7,43 +7,40 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 8080;
 
+function appendJSON(filePath, newData) {
+  try {
+    let json = [];
+
+    // Ensure the file exists, if not, create an empty array
+    if (!fs.existsSync(filePath)) {
+      fs.writeFileSync(filePath, JSON.stringify([]), 'utf-8');
+    }
+
+    // Read existing file data
+    const fileData = fs.readFileSync(filePath, 'utf-8');
+    json = fileData ? JSON.parse(fileData) : [];
+
+    if (Array.isArray(json)) {
+      json.push(newData);
+    } else {
+      console.error('Existing content is not an array. Resetting file.');
+      json = [newData]; // Reset file content if it's not an array
+    }
+
+    fs.writeFileSync(filePath, JSON.stringify(json, null, 2));
+    console.log('Data appended successfully.');
+  } catch (error) {
+    console.error('Error appending data:', error);
+  }
+}
+
 app.use(express.json());
 app.use(express.static(__dirname));
 app.post('/save-message', (req, res) => {
     const { message } = req.body;
-
-    if (!message) {
-        return res.status(400).json({ error: 'Message is required' });
-    }
-
-    const title = `Message-${Date.now()}`; // Generate a title based on timestamp
-    const rating = Math.floor(Math.random() * 5) + 1; // Assign a random rating (1-5)
-
-    const newEntry = { title, message, rating };
-
-    // Save the new entry to data.json
-    const filePath = path.join(__dirname, 'public', 'data.json');
-
-    // Read existing data
-    fs.readFile(filePath, 'utf8', (err, data) => {
-        let jsonData = [];
-        if (!err && data) {
-            try {
-                jsonData = JSON.parse(data);
-            } catch (parseError) {
-                return res.status(500).json({ error: 'Error parsing JSON file' });
-            }
-        }
-
-        jsonData.push(newEntry); // Add the new entry
-
-        fs.writeFile(filePath, JSON.stringify(jsonData, null, 2), (writeErr) => {
-            if (writeErr) {
-                return res.status(500).json({ error: 'Failed to save data' });
-            }
-            res.json({ success: true, message: 'Data saved successfully' });
-        });
-    });
+    console.log(req.body);
+    appendJSON(__dirname + "/data.json", { req });
+    
 });
 
 // API endpoint to send user input to Gemini API
